@@ -1,0 +1,155 @@
+# For more information, see the Configuration Guide:
+# https://www.librechat.ai/docs/configuration/librechat_yaml
+
+# Configuration version (required)
+version: 1.2.8
+
+# Cache settings: Set to true to enable caching
+cache: true
+
+# File strategy s3/firebase
+# fileStrategy: "s3"
+
+# Custom interface configuration
+interface:
+  customWelcome: 'Welcome to Sage 🌱'
+
+  endpointsMenu: false
+  modelSelect: false
+  parameters: false
+  sidePanel: false
+  presets: false
+  prompts: true
+  bookmarks: true
+  multiConvo: false
+  agents: true
+  runCode: false
+  webSearch: false
+
+modelSpecs:
+  enforce: true
+  prioritize: true
+  list:
+    - name: 'sage-anthropic-claude-sonnet-4-20250514'
+      label: 'Sage'
+      default: true
+      description: 'Your personal AI assistant for achieving your goals'
+      # iconURL: '/client/public/assets/seedling_1f331.png'
+      preset:
+        endpoint: 'anthropic'
+        model: 'claude-sonnet-4-20250514'
+        modelLabel: 'Sage'
+
+# Example Cloudflare turnstile (optional)
+#turnstile:
+#  siteKey: "your-site-key-here"
+#  options:
+#    language: "auto"    # "auto" or an ISO 639-1 language code (e.g. en)
+#    size: "normal"      # Options: "normal", "compact", "flexible", or "invisible"
+
+# Example Registration Object Structure (optional)
+registration:
+  socialLogins: ['github', 'google', 'discord', 'openid', 'facebook', 'apple', 'saml']
+  # allowedDomains:
+  # - "gmail.com"
+
+# Example Balance settings
+# balance:
+#   enabled: false
+#   startBalance: 20000
+#   autoRefillEnabled: false
+#   refillIntervalValue: 30
+#   refillIntervalUnit: 'days'
+#   refillAmount: 10000
+
+# speech:
+#   tts:
+#     openai:
+#       url: ''
+#       apiKey: '${TTS_API_KEY}'
+#       model: ''
+#       voices: ['']
+
+#
+#   stt:
+#     openai:
+#       url: ''
+#       apiKey: '${STT_API_KEY}'
+#       model: ''
+
+# rateLimits:
+#   fileUploads:
+#     ipMax: 100
+#     ipWindowInMinutes: 60  # Rate limit window for file uploads per IP
+#     userMax: 50
+#     userWindowInMinutes: 60  # Rate limit window for file uploads per user
+#   conversationsImport:
+#     ipMax: 100
+#     ipWindowInMinutes: 60  # Rate limit window for conversation imports per IP
+#     userMax: 50
+#     userWindowInMinutes: 60  # Rate limit window for conversation imports per user
+
+# Example Actions Object Structure
+actions:
+  allowedDomains:
+    - 'swapi.dev'
+    - 'librechat.ai'
+    - 'google.com'
+
+# Example MCP Servers Object Structure
+# mcpServers:
+#   everything:
+#     # type: sse # type can optionally be omitted
+#     url: http://localhost:3001/sse
+#     timeout: 60000  # 1 minute timeout for this server, this is the default timeout for MCP servers.
+#   puppeteer:
+#     type: stdio
+#     command: npx
+#     args:
+#       - -y
+#       - "@modelcontextprotocol/server-puppeteer"
+#     timeout: 300000  # 5 minutes timeout for this server
+#   filesystem:
+#     # type: stdio
+#     command: npx
+#     args:
+#       - -y
+#       - "@modelcontextprotocol/server-filesystem"
+#       - /home/user/LibreChat/
+#     iconPath: /home/user/LibreChat/client/public/assets/logo.svg
+#   mcp-obsidian:
+#     command: npx
+#     args:
+#       - -y
+#       - "mcp-obsidian"
+#       - /path/to/obsidian/vault
+
+# Definition of custom endpoints
+endpoints:
+  # The Anthropic endpoint is configured via .env variables, not here.
+  # See docs: https://www.librechat.ai/docs/configuration/pre_configured_ai/anthropic
+  # OpenAI, Google, and other pre-configured endpoints are also managed in the .env file.
+  # Use this `custom` section for other models that follow the OpenAI API format.
+  custom: []
+  # assistants:
+  #   disableBuilder: false # Disable Assistants Builder Interface by setting to `true`
+  #   pollIntervalMs: 3000  # Polling interval for checking assistant updates
+  #   timeoutMs: 180000  # Timeout for assistant operations
+  #   # Should only be one or the other, either `supportedIds` or `excludedIds`
+  #   supportedIds: ["asst_supportedAssistantId1", "asst_supportedAssistantId2"]
+  #   # excludedIds: ["asst_excludedAssistantId"]
+  #   # Only show assistants that the user created or that were created externally (e.g. in Assistants playground).
+  #   # privateAssistants: false # Does not work with `supportedIds` or `excludedIds`
+  #   # (optional) Models that support retrieval, will default to latest known OpenAI models that support the feature
+  #   retrievalModels: ["gpt-4-turbo-preview"]
+  #   # (optional) Assistant Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
+  #   capabilities: ["code_interpreter", "retrieval", "actions", "tools", "image_vision"]
+  # agents:
+  #   # (optional) Default recursion depth for agents, defaults to 25
+  #   recursionLimit: 50
+  #   # (optional) Max recursion depth for agents, defaults to 25
+  #   maxRecursionLimit: 100
+  #   # (optional) Disable the builder interface for agents
+  #   disableBuilder: false
+  #   # (optional) Agent Capabilities available to all users. Omit the ones you wish to exclude. Defaults to list below.
+  #   capabilities: ["execute_code", "file_search", "actions", "tools"]
