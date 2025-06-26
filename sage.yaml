@@ -12,7 +12,7 @@ cache: true
 
 # Custom interface configuration
 interface:
-  customWelcome: 'Welcome to Sage 🌱'
+  customWelcome: 'Welcome to North Star AI 🌟'
 
   endpointsMenu: false
   modelSelect: false
@@ -31,14 +31,15 @@ modelSpecs:
   prioritize: true
   list:
     - name: 'sage-anthropic-claude-sonnet-4-20250514'
-      label: 'Sage'
+      label: 'North Star'
       default: true
       description: 'Your personal AI assistant for achieving your goals'
-      # iconURL: '/client/public/assets/seedling_1f331.png'
       preset:
         endpoint: 'anthropic'
         model: 'claude-sonnet-4-20250514'
-        modelLabel: 'Sage'
+        modelLabel: 'Polaris'
+        promptPrefix: |
+          Your task is to be my goal-setting partner. When I state a goal, ask clarifying questions to understand it. Then, help me break it down into a clear and motivating to-do list. Be encouraging and concise.
 
 # Example Cloudflare turnstile (optional)
 #turnstile:
